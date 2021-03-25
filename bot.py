@@ -60,16 +60,16 @@ async def on_message(message):
 
 @bot.command(pass_context=True)
 async def help(ctx):
-    embed = discord.Embed(title="Reddit Votes", colour=discord.Colour(0xff5700), url="https://mi460.dev/github", description="```Commands for Reddit Votes```")
+    embed = discord.Embed(title="Reddit Votes", colour=discord.Colour(0xff5700), url="https://mi460.dev/github", description=f"Commands for {bot.user.name}")
 
     embed.set_thumbnail(url="https://archive.mi460.dev/images/reddit.png")
-    embed.set_author(name=f"{bot.user.name}#{bot.user.discriminator}", url="https://mi460.dev/github", icon_url="https://archive.mi460.dev/images/reddit.png")
+    embed.set_author(name=f"{bot.user.name}#{bot.user.discriminator}", url="https://mi460.dev/github", icon_url=f"{bot.user.avatar_url}")
     embed.set_footer(text="Simulating Reddit on Discord")
 
-    embed.add_field(name="`~enable`", value="Enables new messages sent in the current channel to automatically have upvote/downvote reactions.")
-    embed.add_field(name="`~disable`", value="Disables new messages sent in the current channel to automatically have upvote/downvote reactions.")
-    embed.add_field(name="`~attenable`", value="Enables new messages *with attachments* sent in the current channel to automatically have upvote/downvote reactions. This is most important for meme channels when you only want images sent to be upvote-able.")
-    embed.add_field(name="`~list`", value="Shows all enabled channels in a server.")
+    embed.add_field(name=f"`{prefix}enable`", value="Enables new messages sent in the current channel to automatically have upvote/downvote reactions.")
+    embed.add_field(name=f"`{prefix}disable`", value="Disables new messages sent in the current channel to automatically have upvote/downvote reactions.")
+    embed.add_field(name=f"`{prefix}attenable`", value="Enables new messages *with attachments* sent in the current channel to automatically have upvote/downvote reactions. This is most important for meme channels when you only want images sent to be upvote-able.")
+    embed.add_field(name=f"`{prefix}list`", value="Shows all enabled channels in a server.")
 
     await ctx.author.send(content="`All commands require administrator permission on a server. Please note that the bot will require the add reactions permission and (occasionally) the manage messages permission. Thank you for using my bot :)`", embed=embed)
     await ctx.message.add_reaction(upvote)
